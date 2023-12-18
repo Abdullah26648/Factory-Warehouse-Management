@@ -1,9 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-
-public class Product {
+public class Warehouse_Product {
     private int id;
     private String name;
     private String producer;
@@ -11,7 +6,7 @@ public class Product {
     private String unit;
     private String shelf;
 
-    public Product(int id, String name, String producer, int quantity, String unit, String shelf) {
+    public Warehouse_Product(int id, String name, String producer, int quantity, String unit, String shelf) {
         this.id = id;
         this.name = name;
         this.producer = producer;
@@ -20,7 +15,7 @@ public class Product {
         this.shelf = shelf;
     }
 
-    public Product() {
+    public Warehouse_Product() {
     }
 
     public int getId() {

@@ -1,7 +1,7 @@
-import java.util.*;
 public class Warehouse_Runner {
+
     public static void main(String[] args) {
-            WarehouseManager warehouseManager = new WarehouseManager();
+            Warehouse_Manager warehouseManager = new Warehouse_Manager();
             warehouseManager.menu();
     }
 }
