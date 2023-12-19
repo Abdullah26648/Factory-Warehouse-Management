@@ -1,20 +1,20 @@
 import java.util.*;
 
-public class Warehouse_Manager implements Purchase, Sale {
+public class Warehouse_Manager {
     private static final Map<Integer, List<Warehouse_Product>> productsMap = new TreeMap<>();
     public Scanner scanner = new Scanner(System.in);
 
-    @Override
+
     public void enterProduct() {
         System.out.println("Enter product details:");
         System.out.print("ID: ");
-        int id = InputExceptionHandler.getIntInput("Enter product ID: ");
+        int id = InputExceptionHandler.getIntInput("");
         System.out.print("Name: ");
         String name = scanner.nextLine();
         System.out.print("Producer: ");
         String producer = scanner.nextLine();
         System.out.print("Quantity: ");
-        int quantity = InputExceptionHandler.getIntInput("Enter product Quality: ");
+        int quantity = InputExceptionHandler.getIntInput("");
         System.out.print("Unit: ");
         String unit = scanner.nextLine();
         System.out.println("Product entered successfully.");
@@ -23,10 +23,10 @@ public class Warehouse_Manager implements Purchase, Sale {
         productsMap.computeIfAbsent(id, k -> new ArrayList<>()).add(warehouseProduct);
     }
 
-    @Override
+
     public void placeOnShelf() {
         System.out.print("Enter product ID to place on shelf: ");
-        int id = InputExceptionHandler.getIntInput("Enter product ID: ");
+        int id = InputExceptionHandler.getIntInput("");
         System.out.print("Enter shelf: ");
         String shelf = scanner.nextLine();
 
@@ -41,12 +41,12 @@ public class Warehouse_Manager implements Purchase, Sale {
         }
     }
 
-    @Override
+
     public void exitProduct() {
         System.out.print("Enter product ID to exit: ");
-        int id = InputExceptionHandler.getIntInput("Enter product ID to exit: ");
+        int id = InputExceptionHandler.getIntInput("");
         System.out.print("Enter quantity to exit: ");
-        int exitQuantity = InputExceptionHandler.getIntInput("Enter Quantity value with number to exit: ");
+        int exitQuantity = InputExceptionHandler.getIntInput("");
 
         List<Warehouse_Product> warehouseProductList = productsMap.get(id);
         if (warehouseProductList != null && !warehouseProductList.isEmpty()) {
@@ -63,6 +63,18 @@ public class Warehouse_Manager implements Purchase, Sale {
             System.out.println("Product not found.");
         }
     }
+    public void initProduct() {
+
+        Warehouse_Product product1 = new Warehouse_Product(1000, "Vücut Sabunu", "HacıSakir", 100, "Karton", null);
+        Warehouse_Product product2 = new Warehouse_Product(1001, "El Sabunu", "HacıSakir", 50, "Karton", null);
+        Warehouse_Product product3 = new Warehouse_Product(1002, "Yüz Sabunu", "HacıSakir", 200, "Karton", null);
+        Warehouse_Product product4 = new Warehouse_Product(1003, "Sac Icin", "HacıSakir", 150, "Karton", null);
+
+        productsMap.computeIfAbsent(product1.getId(), k -> new ArrayList<>()).add(product1);
+        productsMap.computeIfAbsent(product2.getId(), k -> new ArrayList<>()).add(product2);
+        productsMap.computeIfAbsent(product3.getId(), k -> new ArrayList<>()).add(product3);
+        productsMap.computeIfAbsent(product4.getId(), k -> new ArrayList<>()).add(product4);
+    }
 
     public void listProducts() {
         System.out.println("List of Products:");
@@ -76,18 +88,18 @@ public class Warehouse_Manager implements Purchase, Sale {
     public void menu() {
         int choice;
         do {
-            System.out.println("\n===========================");
-            System.out.println("     Warehouse Menu");
-            System.out.println("===========================");
-            System.out.println("1. Enter Product");
-            System.out.println("2. Place on Shelf");
-            System.out.println("3. Exit Product");
-            System.out.println("4. List Products");
-            System.out.println("0. Exit");
+            System.out.println("\n⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐");
+            System.out.println(" \uD83C\uDFED Warehouse Menu \uD83C\uDFED");
+            System.out.println("⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐");
+            System.out.println("1. 📦 Enter Product");
+            System.out.println("2. 🛒 Place on Shelf");
+            System.out.println("3. 🛒 Exit Product");
+            System.out.println("4. 📋 List Products");
+            System.out.println("0. 🚪 Exit");
             System.out.println("===========================");
 
             System.out.print("Enter your choice: ");
-            choice = InputExceptionHandler.getIntInput("Enter your choice: ");
+            choice = InputExceptionHandler.getIntInput("");
 
             switch (choice) {
                 case 1:
@@ -103,7 +115,7 @@ public class Warehouse_Manager implements Purchase, Sale {
                     listProducts();
                     break;
                 case 0:
-                    System.out.println("Exiting the warehouse management system.");
+                    System.out.println("👋 Exiting the warehouse management system. Goodbye!");
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");

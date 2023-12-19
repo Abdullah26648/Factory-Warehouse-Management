@@ -10,7 +10,7 @@ public class InputExceptionHandler {
                 System.out.print(prompt);
                 return scanner.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input type. Please enter a valid numeric value.");
+                System.out.println("Invalid ❌ input type. Please enter a valid ✅ numeric value.");
                 scanner.nextLine(); // Consume the invalid input
             }
         }
