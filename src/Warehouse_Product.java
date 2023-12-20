@@ -68,7 +68,7 @@ public class Warehouse_Product {
 
     @Override
     public String toString() {
-        return String.format("\uD83D\uDCBE ID: %-4d\t\uD83D\uDCD5Name: %-20s\t\uD83C\uDFD7\uFE0FProducer: %-20s\t\uD83E\uDDF1Quantity: %-4d\t\uD83D\uDEE2\uFE0FUnit: %-20s\t\uD83D\uDDC3\uFE0FShelf: %-20s",
+        return String.format("💾 ID: %-6d\t📕 Name: %-15s\t📗 Producer: %-15s\t🗃️ Quantity: %-6d\t📢 Unit: %-15s\t📃 Shelf: %-15s",
                 id, name, producer, quantity, unit, shelf);
     }
 }
