@@ -2,9 +2,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputExceptionHandler {
-    private static Scanner scanner = new Scanner(System.in);
 
     public static int getIntInput(String prompt) {
+        Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
                 System.out.print(prompt);
@@ -12,7 +12,7 @@ public class InputExceptionHandler {
             } catch (InputMismatchException e) {
                 System.out.println("‼️ Invalid input type. Please enter a valid numeric value ‼️");
                 System.out.print("✒️ Enter your choice: ");
-                scanner.nextLine(); // Consume the invalid input
+                scanner.nextLine();
             }
         }
     }

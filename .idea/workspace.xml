@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a8accc0-e191-49b9-b9c9-cbb247fcf61b" name="Changes" comment="19.12.2023 3.5 day progress.&#10;To string adjusted and some visual improvement implemented.">
+    <list default="true" id="5a8accc0-e191-49b9-b9c9-cbb247fcf61b" name="Changes" comment="20.12.2023 4. day progress.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/InputExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Purchase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warehouse_Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Purchase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sale.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Warehouse_Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Management.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Warehouse_Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Warehouse_Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Runner.java" afterDir="false" />
     </list>
@@ -22,13 +23,32 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="c261cc9fb78d651177b4880c16964182920a3fbb" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Abdullah26648&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="5b1f5476-e38c-4b4b-8e1e-06d54c25befc" />
+        <option name="url" value="https://github.com/Abdullah26648/Factory-Warehouse-Management.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -62,8 +82,8 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Warehouse_Runner">
-    <configuration name="Warehouse_Manager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Warehouse_Manager" />
+    <configuration name="Warehouse_Management" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Warehouse_Management" />
       <module name="Factory Warehouse Management" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -79,7 +99,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Warehouse_Runner" />
-        <item itemvalue="Application.Warehouse_Manager" />
+        <item itemvalue="Application.Warehouse_Management" />
+        <item itemvalue="Application.Warehouse_Runner" />
+        <item itemvalue="Application.Warehouse_Runner" />
       </list>
     </recent_temporary>
   </component>
@@ -131,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703023126196</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="19.12.2023 3.9 day progress.&#10;2 Layer menu system  and some visual improvement added.">
+      <option name="closed" value="true" />
+      <created>1703033275836</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1703033275836</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,6 +180,7 @@
     <MESSAGE value="18.12.2023 2. day progress.&#10;InputExceptionHandler created and ımplemented." />
     <MESSAGE value="19.12.2023 3. day progress.&#10;Costumer and Manager classes are created initialproducts are added." />
     <MESSAGE value="19.12.2023 3.5 day progress.&#10;To string adjusted and some visual improvement implemented." />
-    <option name="LAST_COMMIT_MESSAGE" value="19.12.2023 3.5 day progress.&#10;To string adjusted and some visual improvement implemented." />
+    <MESSAGE value="19.12.2023 3.9 day progress.&#10;2 Layer menu system  and some visual improvement added." />
+    <option name="LAST_COMMIT_MESSAGE" value="19.12.2023 3.9 day progress.&#10;2 Layer menu system  and some visual improvement added." />
   </component>
 </project>

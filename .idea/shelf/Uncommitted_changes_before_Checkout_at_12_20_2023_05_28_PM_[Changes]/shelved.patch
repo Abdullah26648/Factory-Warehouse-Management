@@ -1,0 +1,405 @@
+Index: src/Manager.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Manager extends Warehouse_Manager implements Purchase {\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Manager.java b/src/Manager.java
+--- a/src/Manager.java	(revision c261cc9fb78d651177b4880c16964182920a3fbb)
++++ b/src/Manager.java	(date 1703082400245)
+@@ -1,3 +1,31 @@
+ public class Manager extends Warehouse_Manager implements Purchase {
++    @Override
++    public void enterProduct() {
++        super.enterProduct();
++    }
++
++    @Override
++    public void addProduct() {
++        super.addProduct();
++    }
++
++    @Override
++    public void exitProduct() {
++        super.exitProduct();
++    }
++
++    @Override
++    public void listProducts() {
++        super.listProducts();
++    }
+ 
++    @Override
++    public void authorizationMenu() {
++        super.authorizationMenu();
++    }
++
++    @Override
++    public void ManagerMenu() {
++        super.ManagerMenu();
++    }
+ }
+Index: src/InputExceptionHandler.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.InputMismatchException;\r\nimport java.util.Scanner;\r\n\r\npublic class InputExceptionHandler {\r\n    private static Scanner scanner = new Scanner(System.in);\r\n\r\n    public static int getIntInput(String prompt) {\r\n        while (true) {\r\n            try {\r\n                System.out.print(prompt);\r\n                return scanner.nextInt();\r\n            } catch (InputMismatchException e) {\r\n                System.out.println(\"‼\\uFE0F Invalid input type. Please enter a valid numeric value.\");\r\n                scanner.nextLine(); // Consume the invalid input\r\n            }\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/InputExceptionHandler.java b/src/InputExceptionHandler.java
+--- a/src/InputExceptionHandler.java	(revision c261cc9fb78d651177b4880c16964182920a3fbb)
++++ b/src/InputExceptionHandler.java	(date 1703082400293)
+@@ -15,4 +15,5 @@
+             }
+         }
+     }
++
+ }
+\ No newline at end of file
+Index: src/Warehouse_Runner.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Warehouse_Runner {\r\n\r\n    public static void main(String[] args) {\r\n            Warehouse_Manager warehouseManager = new Warehouse_Manager();\r\n            warehouseManager.initProduct();\r\n            warehouseManager.menu();\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Warehouse_Runner.java b/src/Warehouse_Runner.java
+--- a/src/Warehouse_Runner.java	(revision c261cc9fb78d651177b4880c16964182920a3fbb)
++++ b/src/Warehouse_Runner.java	(date 1703082427864)
+@@ -1,8 +1,7 @@
+ public class Warehouse_Runner {
+ 
+     public static void main(String[] args) {
+-            Warehouse_Manager warehouseManager = new Warehouse_Manager();
+-            warehouseManager.initProduct();
+-            warehouseManager.menu();
++      Warehouse_Manager warehouseManager = new Warehouse_Manager();
++      warehouseManager.authorizationMenu();
+     }
+ }
+\ No newline at end of file
+Index: src/Warehouse_Manager.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.*;\r\n\r\npublic class Warehouse_Manager {\r\n    private static final Map<Integer, List<Warehouse_Product>> productsMap = new HashMap<>();\r\n    public Scanner scanner = new Scanner(System.in);\r\n\r\n\r\n    public void enterProduct() {\r\n        System.out.println(\"✒\\uFE0F Enter product details:\");\r\n        System.out.print(\"\\uD83D\\uDCBE ID: \");\r\n        int id = InputExceptionHandler.getIntInput(\"\");\r\n        System.out.print(\"\\uD83D\\uDCD5 Name: \");\r\n        String name = scanner.nextLine();\r\n        System.out.print(\"\\uD83C\\uDFD7\\uFE0F Producer: \");\r\n        String producer = scanner.nextLine();\r\n        System.out.print(\"\\uD83E\\uDDF1 Quantity: \");\r\n        int quantity = InputExceptionHandler.getIntInput(\"\");\r\n        System.out.print(\"\\uD83D\\uDEE2\\uFE0F Unit: \");\r\n        String unit = scanner.nextLine();\r\n        System.out.println(\"✔\\uFE0F Product entered successfully.\");\r\n\r\n        Warehouse_Product warehouseProduct = new Warehouse_Product(id, name, producer, quantity, unit, null);\r\n        productsMap.computeIfAbsent(id, k -> new ArrayList<>()).add(warehouseProduct);\r\n    }\r\n\r\n\r\n    public void placeOnShelf() {\r\n        System.out.print(\"✒\\uFE0F Enter product ID to place on shelf: \");\r\n        int id = InputExceptionHandler.getIntInput(\"\");\r\n        System.out.print(\"✒\\uFE0F Enter shelf: \");\r\n        String shelf = scanner.nextLine();\r\n\r\n        List<Warehouse_Product> warehouseProductList = productsMap.get(id);\r\n        if (warehouseProductList != null && !warehouseProductList.isEmpty()) {\r\n            for (Warehouse_Product warehouseProduct : warehouseProductList) {\r\n                warehouseProduct.setShelf(shelf);\r\n            }\r\n            System.out.println(\"✔\\uFE0F Product placed on shelf successfully.\");\r\n        } else {\r\n            System.out.println(\"‼\\uFE0F Product not found.\");\r\n        }\r\n    }\r\n\r\n\r\n    public void exitProduct() {\r\n        System.out.print(\"✒\\uFE0F Enter product ID to exit: \");\r\n        int id = InputExceptionHandler.getIntInput(\"\");\r\n        System.out.print(\"✒\\uFE0F Enter quantity to exit: \");\r\n        int exitQuantity = InputExceptionHandler.getIntInput(\"\");\r\n\r\n        List<Warehouse_Product> warehouseProductList = productsMap.get(id);\r\n        if (warehouseProductList != null && !warehouseProductList.isEmpty()) {\r\n            for (Warehouse_Product warehouseProduct : warehouseProductList) {\r\n                int remainingQuantity = warehouseProduct.getQuantity() - exitQuantity;\r\n                if (remainingQuantity >= 0) {\r\n                    warehouseProduct.setQuantity(remainingQuantity);\r\n                    System.out.println(\"✔\\uFE0F Product exited successfully.\");\r\n                } else {\r\n                        System.out.println(\"‼\\uFE0F Exit quantity exceeds available quantity.\");\r\n                }\r\n            }\r\n        } else {\r\n            System.out.println(\"‼\\uFE0F Product not found.\");\r\n        }\r\n    }\r\n    public void initProduct() {\r\n\r\n        Warehouse_Product product1 = new Warehouse_Product(1000, \"Vücut Sabunu\", \"HacıSakir\", 100, \"Karton\", null);\r\n        Warehouse_Product product2 = new Warehouse_Product(1001, \"El Sabunu\", \"HacıSakir\", 50, \"Karton\", null);\r\n        Warehouse_Product product3 = new Warehouse_Product(1002, \"Yüz Sabunu\", \"HacıSakir\", 200, \"Karton\", null);\r\n        Warehouse_Product product4 = new Warehouse_Product(1003, \"Sac Icin\", \"HacıSakir\", 150, \"Karton\", null);\r\n\r\n        productsMap.computeIfAbsent(product1.getId(), k -> new ArrayList<>()).add(product1);\r\n        productsMap.computeIfAbsent(product2.getId(), k -> new ArrayList<>()).add(product2);\r\n        productsMap.computeIfAbsent(product3.getId(), k -> new ArrayList<>()).add(product3);\r\n        productsMap.computeIfAbsent(product4.getId(), k -> new ArrayList<>()).add(product4);\r\n    }\r\n\r\n    public void listProducts() {\r\n        System.out.println(\"List of Products:\");\r\n        for (List<Warehouse_Product> warehouseProductList : productsMap.values()) {\r\n            for (Warehouse_Product warehouseProduct : warehouseProductList) {\r\n                System.out.println(warehouseProduct);\r\n            }\r\n        }\r\n    }\r\n\r\n    public void menu() {\r\n        int choice;\r\n        do {\r\n            System.out.println(\"\\n⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐\");\r\n            System.out.println(\" \\uD83C\\uDFED Warehouse Menu \\uD83C\\uDFED\");\r\n            System.out.println(\"⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐\");\r\n            System.out.println(\"1\\uFE0F⃣. \uD83D\uDCE6 Enter Product\");\r\n            System.out.println(\"2\\uFE0F⃣. \uD83D\uDED2 Place on Shelf\");\r\n            System.out.println(\"3\\uFE0F⃣. \uD83D\uDED2 Exit Product\");\r\n            System.out.println(\"4\\uFE0F⃣. \uD83D\uDCCB List Products\");\r\n            System.out.println(\"0\\uFE0F⃣. \uD83D\uDEAA Exit\");\r\n            System.out.println(\"⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐\");\r\n\r\n            System.out.print(\"✒\\uFE0F Enter your choice: \");\r\n            choice = InputExceptionHandler.getIntInput(\"\");\r\n\r\n            switch (choice) {\r\n                case 1:\r\n                    enterProduct();\r\n                    break;\r\n                case 2:\r\n                    placeOnShelf();\r\n                    break;\r\n                case 3:\r\n                    exitProduct();\r\n                    break;\r\n                case 4:\r\n                    listProducts();\r\n                    break;\r\n                case 0:\r\n                    System.out.println(\"\uD83D\uDC4B Exiting the warehouse management system. Goodbye!\");\r\n                    break;\r\n                default:\r\n                    System.out.println(\"‼\\uFE0F Invalid choice. Please enter a valid option.\");\r\n            }\r\n\r\n        } while (choice != 0);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Warehouse_Manager.java b/src/Warehouse_Manager.java
+--- a/src/Warehouse_Manager.java	(revision c261cc9fb78d651177b4880c16964182920a3fbb)
++++ b/src/Warehouse_Manager.java	(date 1703082465016)
+@@ -4,48 +4,52 @@
+     private static final Map<Integer, List<Warehouse_Product>> productsMap = new HashMap<>();
+     public Scanner scanner = new Scanner(System.in);
+ 
+-
+     public void enterProduct() {
+-        System.out.println("✒\uFE0F Enter product details:");
+-        System.out.print("\uD83D\uDCBE ID: ");
++        System.out.println("✒️ Enter product details:");
++        System.out.print("💾 ID: ");
+         int id = InputExceptionHandler.getIntInput("");
+-        System.out.print("\uD83D\uDCD5 Name: ");
++        System.out.print("📕 Name: ");
+         String name = scanner.nextLine();
+-        System.out.print("\uD83C\uDFD7\uFE0F Producer: ");
++        System.out.print("📗 Producer: ");
+         String producer = scanner.nextLine();
+-        System.out.print("\uD83E\uDDF1 Quantity: ");
++        System.out.print("🗃️ Quantity: ");
+         int quantity = InputExceptionHandler.getIntInput("");
+-        System.out.print("\uD83D\uDEE2\uFE0F Unit: ");
++        System.out.print("📢 Unit: ");
+         String unit = scanner.nextLine();
+-        System.out.println("✔\uFE0F Product entered successfully.");
++        System.out.print("📃 Shelf: ");
++        String shelf = scanner.nextLine();
++        System.out.println("✔️ Product entered successfully.");
+ 
+-        Warehouse_Product warehouseProduct = new Warehouse_Product(id, name, producer, quantity, unit, null);
++        Warehouse_Product warehouseProduct = new Warehouse_Product(id, name, producer, quantity, unit, shelf);
+         productsMap.computeIfAbsent(id, k -> new ArrayList<>()).add(warehouseProduct);
+     }
+ 
+-
+-    public void placeOnShelf() {
+-        System.out.print("✒\uFE0F Enter product ID to place on shelf: ");
++    public void addProduct() {
++        System.out.print("✒️ Enter product ID: ");
+         int id = InputExceptionHandler.getIntInput("");
+-        System.out.print("✒\uFE0F Enter shelf: ");
+-        String shelf = scanner.nextLine();
++        System.out.print("✒️ Enter quantity to add: ");
++        int quantityToAdd = InputExceptionHandler.getIntInput("");
+ 
+         List<Warehouse_Product> warehouseProductList = productsMap.get(id);
+         if (warehouseProductList != null && !warehouseProductList.isEmpty()) {
+             for (Warehouse_Product warehouseProduct : warehouseProductList) {
+-                warehouseProduct.setShelf(shelf);
++                int currentQuantity = warehouseProduct.getQuantity();
++                warehouseProduct.setQuantity(currentQuantity + quantityToAdd);
++            }
++            System.out.println("✔️ Product quantity updated successfully.");
++
++            for (Warehouse_Product warehouseProduct : warehouseProductList) {
++                System.out.println("🗃️ Updated Product: " + warehouseProduct);
+             }
+-            System.out.println("✔\uFE0F Product placed on shelf successfully.");
+         } else {
+-            System.out.println("‼\uFE0F Product not found.");
++            System.out.println("‼️ Product not found.");
+         }
+     }
+-
+ 
+     public void exitProduct() {
+-        System.out.print("✒\uFE0F Enter product ID to exit: ");
++        System.out.print("✒️ Enter product ID to exit: ");
+         int id = InputExceptionHandler.getIntInput("");
+-        System.out.print("✒\uFE0F Enter quantity to exit: ");
++        System.out.print("✒️ Enter quantity to exit: ");
+         int exitQuantity = InputExceptionHandler.getIntInput("");
+ 
+         List<Warehouse_Product> warehouseProductList = productsMap.get(id);
+@@ -54,59 +58,108 @@
+                 int remainingQuantity = warehouseProduct.getQuantity() - exitQuantity;
+                 if (remainingQuantity >= 0) {
+                     warehouseProduct.setQuantity(remainingQuantity);
+-                    System.out.println("✔\uFE0F Product exited successfully.");
++                    System.out.println("✔️ Product exited successfully.");
+                 } else {
+-                        System.out.println("‼\uFE0F Exit quantity exceeds available quantity.");
++                    System.out.println("‼️ Exit quantity exceeds available quantity.");
+                 }
+             }
+         } else {
+-            System.out.println("‼\uFE0F Product not found.");
++            System.out.println("‼️ Product not found.");
+         }
+     }
+-    public void initProduct() {
+ 
+-        Warehouse_Product product1 = new Warehouse_Product(1000, "Vücut Sabunu", "HacıSakir", 100, "Karton", null);
+-        Warehouse_Product product2 = new Warehouse_Product(1001, "El Sabunu", "HacıSakir", 50, "Karton", null);
+-        Warehouse_Product product3 = new Warehouse_Product(1002, "Yüz Sabunu", "HacıSakir", 200, "Karton", null);
+-        Warehouse_Product product4 = new Warehouse_Product(1003, "Sac Icin", "HacıSakir", 150, "Karton", null);
+-
+-        productsMap.computeIfAbsent(product1.getId(), k -> new ArrayList<>()).add(product1);
+-        productsMap.computeIfAbsent(product2.getId(), k -> new ArrayList<>()).add(product2);
+-        productsMap.computeIfAbsent(product3.getId(), k -> new ArrayList<>()).add(product3);
+-        productsMap.computeIfAbsent(product4.getId(), k -> new ArrayList<>()).add(product4);
++    public void initializeProduct(int id, String name, String producer, int quantity, String unit, String shelf) {
++        Warehouse_Product product = new Warehouse_Product(id, name, producer, quantity, unit, shelf);
++        productsMap.computeIfAbsent(product.getId(), k -> new ArrayList<>()).add(product);
+     }
+ 
+     public void listProducts() {
+         System.out.println("List of Products:");
+-        for (List<Warehouse_Product> warehouseProductList : productsMap.values()) {
+-            for (Warehouse_Product warehouseProduct : warehouseProductList) {
+-                System.out.println(warehouseProduct);
+-            }
++
++        productsMap.values().stream()
++                .flatMap(List::stream)
++                .sorted(Comparator.comparingInt(Warehouse_Product::getId))
++                .forEach(System.out::println);
++    }
++
++    public void authorizationMenu() {
++        System.out.println("\n⚜️⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
++        System.out.println("🔐 Welcome to the Authorization Menu 🔐");
++        System.out.println("🔐 Please choose your role 🕵️");
++        System.out.println("1️⃣ 🛍️ Customer");
++        System.out.println("2️⃣ 🛠️ Manager");
++        System.out.println("0️⃣ 🚪 Exit");
++        System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
++
++        System.out.print("✒️ Enter your choice: ");
++        int roleChoice = InputExceptionHandler.getIntInput("");
++
++        switch (roleChoice) {
++            case 1:
++                CustomerMenu();
++                break;
++            case 2:
++                ManagerMenu();
++                break;
++            case 0:
++                System.out.println("👋 Exiting the system. Goodbye!");
++                System.exit(0);
++            default:
++                System.out.println("‼️ Invalid choice. Please enter a valid option.");
++                authorizationMenu(); // Repeat the authorization menu if the choice is invalid
+         }
+     }
+ 
+-    public void menu() {
++    public void CustomerMenu() {
++        int choice;
++        do {
++            System.out.println("\n🛍️ Customer Menu 🛍️");
++            System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
++            System.out.println("1️⃣ 📤 Exit Product");
++            System.out.println("2️⃣ 📋 List Products");
++            System.out.println("0️⃣ 🚪 Exit");
++            System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
++
++            System.out.print("✒️ Enter your choice: ");
++            choice = InputExceptionHandler.getIntInput("");
++            switch (choice) {
++                case 1:
++                    exitProduct();
++                    break;
++                case 2:
++                    listProducts();
++                    break;
++                case 0:
++                    System.out.println("🚪 Returning to the Authorization Menu...");
++                    authorizationMenu();
++                    break;
++                default:
++                    System.out.println("‼️ Invalid choice. Please enter a valid option.");
++            }
++
++        } while (choice != 0);
++    }
++
++    public void ManagerMenu() {
+         int choice;
+         do {
+-            System.out.println("\n⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐");
+-            System.out.println(" \uD83C\uDFED Warehouse Menu \uD83C\uDFED");
+-            System.out.println("⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐");
+-            System.out.println("1\uFE0F⃣. 📦 Enter Product");
+-            System.out.println("2\uFE0F⃣. 🛒 Place on Shelf");
+-            System.out.println("3\uFE0F⃣. 🛒 Exit Product");
+-            System.out.println("4\uFE0F⃣. 📋 List Products");
+-            System.out.println("0\uFE0F⃣. 🚪 Exit");
+-            System.out.println("⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐");
++            System.out.println("\n🛠️ Manager Menu 🛠️");
++            System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
++            System.out.println("1️⃣ 📥 Enter Product");
++            System.out.println("2️⃣ 🗃️ Add Product");
++            System.out.println("3️⃣ 📤 Exit Product");
++            System.out.println("4️⃣ 📋 List Products");
++            System.out.println("0️⃣ 🚪 Exit");
++            System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
+ 
+-            System.out.print("✒\uFE0F Enter your choice: ");
++            System.out.print("✒️ Enter your choice: ");
+             choice = InputExceptionHandler.getIntInput("");
+-
+             switch (choice) {
+                 case 1:
+                     enterProduct();
+                     break;
+                 case 2:
+-                    placeOnShelf();
++                    addProduct();
+                     break;
+                 case 3:
+                     exitProduct();
+@@ -115,10 +168,11 @@
+                     listProducts();
+                     break;
+                 case 0:
+-                    System.out.println("👋 Exiting the warehouse management system. Goodbye!");
++                    System.out.println("🚪 Returning to the Authorization Menu...");
++                    authorizationMenu();
+                     break;
+                 default:
+-                    System.out.println("‼\uFE0F Invalid choice. Please enter a valid option.");
++                    System.out.println("‼️ Invalid choice. Please enter a valid option.");
+             }
+ 
+         } while (choice != 0);
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"5a8accc0-e191-49b9-b9c9-cbb247fcf61b\" name=\"Changes\" comment=\"19.12.2023 3. day progress.&#10;Costumer and Manager classes are created initialproducts are added.\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/InputExceptionHandler.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/InputExceptionHandler.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Warehouse_Manager.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Warehouse_Manager.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Warehouse_Product.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Warehouse_Product.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2Zfp0pf6U0RLjfcVqPlsZIFAfaV\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.Warehouse_Manager.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.Warehouse_Runner.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/MONSTER/IdeaProjects/Factory Warehouse Management/src&quot;,\r\n    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.rainbow.brackets.disable.when&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\MONSTER\\IdeaProjects\\Factory Warehouse Management\\src\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Warehouse_Runner\">\r\n    <configuration name=\"Warehouse_Manager\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Warehouse_Manager\" />\r\n      <module name=\"Factory Warehouse Management\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Warehouse_Runner\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Warehouse_Runner\" />\r\n      <module name=\"Factory Warehouse Management\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Warehouse_Runner\" />\r\n        <item itemvalue=\"Application.Warehouse_Manager\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-17.0.9-corretto-17.0.9-249ae16d76d6-98297cd8\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"5a8accc0-e191-49b9-b9c9-cbb247fcf61b\" name=\"Changes\" comment=\"\" />\r\n      <created>1702822770532</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1702822770532</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"17.12.2023 İnitial commit.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1702827776420</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1702827776420</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"18.12.2023 2. day progress.&#10;InputExceptionHandler created and ımplemented.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1702918564683</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1702918564683</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"19.12.2023 3. day progress.&#10;Costumer and Manager classes are created initialproducts are added.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1703005597109</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1703005597109</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"17.12.2023 İnitial commit.\" />\r\n    <MESSAGE value=\"18.12.2023 2. day progress.&#10;InputExceptionHandler created and ımplemented.\" />\r\n    <MESSAGE value=\"19.12.2023 3. day progress.&#10;Costumer and Manager classes are created initialproducts are added.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"19.12.2023 3. day progress.&#10;Costumer and Manager classes are created initialproducts are added.\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c261cc9fb78d651177b4880c16964182920a3fbb)
++++ b/.idea/workspace.xml	(date 1703082469482)
+@@ -4,11 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="5a8accc0-e191-49b9-b9c9-cbb247fcf61b" name="Changes" comment="19.12.2023 3. day progress.&#10;Costumer and Manager classes are created initialproducts are added.">
++    <list default="true" id="5a8accc0-e191-49b9-b9c9-cbb247fcf61b" name="Changes" comment="20.12.2023 4. day progress.">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/InputExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InputExceptionHandler.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Warehouse_Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Manager.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/Warehouse_Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Product.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Warehouse_Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Runner.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -24,7 +25,26 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="master" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
++  "lastFilter": {
++    "state": "OPEN",
++    "assignee": "Abdullah26648"
++  }
++}]]></component>
++  <component name="GithubPullRequestsUISettings">
++    <option name="selectedUrlAndAccountId">
++      <UrlAndAccount>
++        <option name="accountId" value="5b1f5476-e38c-4b4b-8e1e-06d54c25befc" />
++        <option name="url" value="https://github.com/Abdullah26648/Factory-Warehouse-Management.git" />
++      </UrlAndAccount>
++    </option>
+   </component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 8
+@@ -119,7 +139,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1703005597109</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="19.12.2023 3.5 day progress.&#10;To string adjusted and some visual improvement implemented.">
++      <option name="closed" value="true" />
++      <created>1703023126196</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1703023126196</updated>
++    </task>
++    <task id="LOCAL-00005" summary="19.12.2023 3.9 day progress.&#10;2 Layer menu system  and some visual improvement added.">
++      <option name="closed" value="true" />
++      <created>1703033275836</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1703033275836</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -137,6 +173,8 @@
+     <MESSAGE value="17.12.2023 İnitial commit." />
+     <MESSAGE value="18.12.2023 2. day progress.&#10;InputExceptionHandler created and ımplemented." />
+     <MESSAGE value="19.12.2023 3. day progress.&#10;Costumer and Manager classes are created initialproducts are added." />
+-    <option name="LAST_COMMIT_MESSAGE" value="19.12.2023 3. day progress.&#10;Costumer and Manager classes are created initialproducts are added." />
++    <MESSAGE value="19.12.2023 3.5 day progress.&#10;To string adjusted and some visual improvement implemented." />
++    <MESSAGE value="19.12.2023 3.9 day progress.&#10;2 Layer menu system  and some visual improvement added." />
++    <option name="LAST_COMMIT_MESSAGE" value="19.12.2023 3.9 day progress.&#10;2 Layer menu system  and some visual improvement added." />
+   </component>
+ </project>
+\ No newline at end of file

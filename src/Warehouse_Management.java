@@ -1,8 +1,9 @@
 import java.util.*;
 
-public class Warehouse_Manager {
-    private static final Map<Integer, List<Warehouse_Product>> productsMap = new HashMap<>();
+public class Warehouse_Management {
+    public static final Map<Integer, List<Warehouse_Product>> productsMap = new HashMap<>();
     public Scanner scanner = new Scanner(System.in);
+    private static final String MANAGER_PASSWORD = "12345";
 
     public void enterProduct() {
         System.out.println("✒️ Enter product details:");
@@ -26,7 +27,7 @@ public class Warehouse_Manager {
 
     public void addProduct() {
         System.out.print("✒️ Enter product ID: ");
-        int id = InputExceptionHandler.getIntInput("");
+        int id = InputExceptionHandler.getIntInput("✒️ Enter product ID: ");
         System.out.print("✒️ Enter quantity to add: ");
         int quantityToAdd = InputExceptionHandler.getIntInput("");
 
@@ -37,8 +38,22 @@ public class Warehouse_Manager {
                 warehouseProduct.setQuantity(currentQuantity + quantityToAdd);
             }
             System.out.println("✔️ Product quantity updated successfully.");
+
+            for (Warehouse_Product warehouseProduct : warehouseProductList) {
+                System.out.println("🗃️ Updated Product: " + warehouseProduct);
+            }
         } else {
-            System.out.println("‼️ Product not found.");
+            System.out.println("‼️ Product with ID " + id + " not found.");
+            System.out.println("✒️ Would you like to enter a new product ?");
+            System.out.println("1️⃣ for Yes");
+            System.out.println("2️⃣ for No");
+            int answer = InputExceptionHandler.getIntInput("");
+            if (answer == 1){
+                enterProduct();
+            } else {
+                System.out.println("🚪 Returning to the Manager Menu...");
+                Returning();
+            }
         }
     }
 
@@ -56,24 +71,44 @@ public class Warehouse_Manager {
                     warehouseProduct.setQuantity(remainingQuantity);
                     System.out.println("✔️ Product exited successfully.");
                 } else {
-                    System.out.println("‼️ Exit quantity exceeds available quantity.");
+                    System.out.println("‼️ Exit quantity for product with ID " + id + " exceeds available quantity.");
+                    System.out.println(productsMap.get(id));
                 }
             }
         } else {
-            System.out.println("‼️ Product not found.");
+            System.out.println("‼️ Product with ID " + id + " not found.");
         }
     }
 
-    public void initProduct() {
-        Warehouse_Product product1 = new Warehouse_Product(1000, "Vücut Sabunu", "HacıSakir", 100, "Karton", "Temizlik");
-        Warehouse_Product product2 = new Warehouse_Product(1001, "El Sabunu", "HacıSakir", 50, "Karton", "Temizlik");
-        Warehouse_Product product3 = new Warehouse_Product(1002, "Yüz Sabunu", "HacıSakir", 200, "Karton", "Temizlik");
-        Warehouse_Product product4 = new Warehouse_Product(1003, "Sac Icin", "HacıSakir", 150, "Karton", "Temizlik");
+    private void initializeProduct(int id, String name, String producer, int quantity, String unit, String shelf) {
+        Warehouse_Product product = new Warehouse_Product(id, name, producer, quantity, unit, shelf);
+        productsMap.computeIfAbsent(product.getId(), k -> new ArrayList<>()).add(product);
+    }
 
-        productsMap.computeIfAbsent(product1.getId(), k -> new ArrayList<>()).add(product1);
-        productsMap.computeIfAbsent(product2.getId(), k -> new ArrayList<>()).add(product2);
-        productsMap.computeIfAbsent(product3.getId(), k -> new ArrayList<>()).add(product3);
-        productsMap.computeIfAbsent(product4.getId(), k -> new ArrayList<>()).add(product4);
+    public void initProduct() {
+        initializeProduct(1000, "Vücut Sabunu", "HacıSakir", 100, "Karton", "Temizlik");
+        initializeProduct(1001, "El Sabunu", "HacıSakir", 50, "Karton", "Temizlik");
+        initializeProduct(1002, "Yüz Sabunu", "HacıSakir", 200, "Karton", "Temizlik");
+        initializeProduct(1003, "Sac Şampuanı", "HacıSakir", 150, "Karton", "Temizlik");
+        initializeProduct(1004, "Çimento", "Medcem", 250, "Cuval", "Yapı");
+        initializeProduct(1005, "Alçı", "Onat", 190, "Cuval", "Yapı");
+        initializeProduct(1006, "Kireç", "Nur", 350, "Cuval", "Yapı");
+        initializeProduct(1007, "Elma", "Isparta", 230, "Kasa", "Gıda");
+        initializeProduct(1008, "Portakal", "Mersin", 430, "Kasa", "Gıda");
+        initializeProduct(1009, "Üzüm", "Manisa", 105, "Kasa", "Gıda");
+        initializeProduct(1010, "Muz", "Anamur", 105, "Kasa", "Gıda");
+    }
+    public void Returning() {
+
+        for (int i = 0; i < 30; i++) {
+            System.out.print("\uD83D\uDCB2");
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException t) {
+            }
+        }
+        System.out.println();
+        authorizationMenu();
     }
 
     public void listProducts() {
@@ -109,14 +144,13 @@ public class Warehouse_Manager {
                 System.exit(0);
             default:
                 System.out.println("‼️ Invalid choice. Please enter a valid option.");
-                authorizationMenu(); // Repeat the authorization menu if the choice is invalid
+                Returning();
         }
     }
-
     public void CustomerMenu() {
         int choice;
         do {
-            System.out.println("\n🛍️ Welcome, Customer! 🛍️");
+            System.out.println("\n🛍️ Customer Menu 🛍️");
             System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
             System.out.println("1️⃣ 📤 Exit Product");
             System.out.println("2️⃣ 📋 List Products");
@@ -134,7 +168,7 @@ public class Warehouse_Manager {
                     break;
                 case 0:
                     System.out.println("🚪 Returning to the Authorization Menu...");
-                    authorizationMenu();
+                    Returning();
                     break;
                 default:
                     System.out.println("‼️ Invalid choice. Please enter a valid option.");
@@ -144,9 +178,14 @@ public class Warehouse_Manager {
     }
 
     public void ManagerMenu() {
+        System.out.print("✒️ Enter manager password: ");
+        String enteredPassword = scanner.nextLine();
+        System.out.println("✔️ Successfully entered manager mode.");
+
+        if (enteredPassword.equals(MANAGER_PASSWORD)) {
         int choice;
         do {
-            System.out.println("\n🛠️ Welcome, Manager! 🛠️");
+            System.out.println("\n🛠️ Manager Menu 🛠️");
             System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
             System.out.println("1️⃣ 📥 Enter Product");
             System.out.println("2️⃣ 🗃️ Add Product");
@@ -172,13 +211,16 @@ public class Warehouse_Manager {
                     break;
                 case 0:
                     System.out.println("🚪 Returning to the Authorization Menu...");
-                    authorizationMenu();
+                    Returning();
                     break;
                 default:
                     System.out.println("‼️ Invalid choice. Please enter a valid option.");
             }
 
         } while (choice != 0);
+        } else {
+            System.out.println("‼️ Incorrect password. Access denied.");
+            Returning();
+        }
     }
-
 }
