@@ -22,25 +22,6 @@ public class Warehouse_Product {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getProducer() {
-        return producer;
-    }
-
-    public void setProducer(String producer) {
-        this.producer = producer;
-    }
 
     public int getQuantity() {
         return quantity;
@@ -50,25 +31,9 @@ public class Warehouse_Product {
         this.quantity = quantity;
     }
 
-    public String getUnit() {
-        return unit;
-    }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
-    public String getShelf() {
-        return shelf;
-    }
-
-    public void setShelf(String shelf) {
-        this.shelf = shelf;
-    }
-
-    @Override
     public String toString() {
-        return String.format("💾 ID: %-6d\t📕 Name: %-15s\t📗 Producer: %-15s\t🗃️ Quantity: %-6d\t📢 Unit: %-15s\t📃 Shelf: %-15s",
+        return String.format("💾 ID: %-6d\t📕 Name: %-15s\t📗 Producer: %-15s\t🗃️ Quantity: %-6d\t📢 Unit: %-10s\t📃 Shelf: %-10s",
                 id, name, producer, quantity, unit, shelf);
     }
 }
