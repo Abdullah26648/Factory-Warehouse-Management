@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a8accc0-e191-49b9-b9c9-cbb247fcf61b" name="Changes" comment="21.12.2023 6. day progress. This is last commit promise :).">
-      <change afterPath="$PROJECT_DIR$/src/Authorization_Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Retail_Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Warehouse_Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Input_Exception_Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input_Exception_Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Retail_Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Retail_Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Warehouse_Management.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Management.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warehouse_Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Warehouse_Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Warehouse_Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Product.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="c261cc9fb78d651177b4880c16964182920a3fbb" />
+        <entry key="$PROJECT_DIR$" value="9ee5adddac269b0da47dc5d48ecc57b21f0082f0" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,6 +39,13 @@
     &quot;assignee&quot;: &quot;Abdullah26648&quot;
   }
 }</component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="master" />
+      </list>
+    </option>
+  </component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -124,10 +128,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Warehouse_Runner" />
-        <item itemvalue="JUnit.Warehouse_Management_Test" />
         <item itemvalue="JUnit.Warehouse_Management_Test.testEnterProduct" />
+        <item itemvalue="JUnit.Warehouse_Management_Test" />
         <item itemvalue="Application.Warehouse_Management" />
-        <item itemvalue="Application.Warehouse_Runner" />
+        <item itemvalue="JUnit.Warehouse_Management_Test.testEnterProduct" />
       </list>
     </recent_temporary>
   </component>

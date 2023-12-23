@@ -4,19 +4,19 @@ public class Warehouse_Manager extends Warehouse_Management implements Manager{
     public void managerMenu() {
     int choice;
     do {
-        System.out.println(Warehouse_Management.B + "\n🛠️ Manager Menu 🛠️");
+        System.out.println(B + "\n🛠️ Manager Menu 🛠️");
         System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
-        System.out.println(Warehouse_Management.G + "1️⃣ 🗃️ Create Product");
-        System.out.println(Warehouse_Management.G + "2️⃣ 📥 Enter Product");
-        System.out.println(Warehouse_Management.R + "3️⃣ 📤 Exit Product");
-        System.out.println(Warehouse_Management.B + "4️⃣ 🔄 Place Product to Shelf");
-        System.out.println(Warehouse_Management.B + "5️⃣ 🔄 Update Product");
-        System.out.println(Warehouse_Management.R + "6️⃣ 🗑️ Delete Product");
-        System.out.println(Warehouse_Management.B + "7️⃣ 📋 List Products");
-        System.out.println(Warehouse_Management.R + "0️⃣ 🚪 Exit");
+        System.out.println(G + "1️⃣ 🗃️ Create Product");
+        System.out.println(G + "2️⃣ 📥 Enter Product");
+        System.out.println(R + "3️⃣ 📤 Exit Product");
+        System.out.println(B + "4️⃣ 🔄 Place Product to Shelf");
+        System.out.println(B + "5️⃣ 🔄 Update Product");
+        System.out.println(R + "6️⃣ 🗑️ Delete Product");
+        System.out.println(B + "7️⃣ 📋 List Products");
+        System.out.println(R + "0️⃣ 🚪 Exit");
         System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
 
-        System.out.print(Warehouse_Management.Y + "✒️ Enter your choice: ");
+        System.out.print(Y + "✒️ Enter your choice: ");
         choice = Input_Exception_Handler.getIntInput("");
         switch (choice) {
             case 1:
