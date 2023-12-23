@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a8accc0-e191-49b9-b9c9-cbb247fcf61b" name="Changes" comment="21.12.2023 6. day progress. This is last commit promise :).">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Input_Exception_Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input_Exception_Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Retail_Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Retail_Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warehouse_Management.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Management.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warehouse_Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warehouse_Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Product.java" afterDir="false" />
-    </list>
+    <list default="true" id="5a8accc0-e191-49b9-b9c9-cbb247fcf61b" name="Changes" comment="24.12.2023 Testing updated." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -223,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703346102788</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="24.12.2023 Testing updated.">
+      <option name="closed" value="true" />
+      <created>1703371262602</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1703371262602</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,6 +248,7 @@
     <MESSAGE value="21.12.2023 5. day progress. Whole project colorcoded and some methods modified. This is last commit." />
     <MESSAGE value="21.12.2023 5. day progress. Whole project colorcoded and some methods modified. This is last commit :)." />
     <MESSAGE value="21.12.2023 6. day progress. This is last commit promise :)." />
-    <option name="LAST_COMMIT_MESSAGE" value="21.12.2023 6. day progress. This is last commit promise :)." />
+    <MESSAGE value="24.12.2023 Testing updated." />
+    <option name="LAST_COMMIT_MESSAGE" value="24.12.2023 Testing updated." />
   </component>
 </project>
