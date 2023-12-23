@@ -1,9 +1,10 @@
 import java.util.*;
 
-public class Warehouse_Management {
+public class Warehouse_Management implements Product {
     public static final Map<Integer, List<Warehouse_Product>> productsMap = new HashMap<>();
     public Scanner scanner = new Scanner(System.in);
     private static final String MANAGER_PASSWORD = "12345";
+
     public static final String W = "\u001B[37m"; // White
     public static final String R = "\u001B[31m"; // Red
     public static final String G = "\u001B[32m"; // Green
@@ -22,16 +23,13 @@ public class Warehouse_Management {
         String name = Input_Exception_Handler.getNonBlankStringInput("");
         System.out.print(W + "📗 Producer: ");
         String producer = Input_Exception_Handler.getNonBlankStringInput("");
-        System.out.print(W + "🗃️ Quantity: ");
-        int quantity = Input_Exception_Handler.getIntInput("");
         System.out.print(W + "📢 Unit: ");
         String unit = Input_Exception_Handler.getNonBlankStringInput("");
-        System.out.print(W + "📃 Shelf: ");
-        String shelf = Input_Exception_Handler.getNonBlankStringInput("");
 
-        Warehouse_Product warehouseProduct = new Warehouse_Product(id, name, producer, quantity, unit, shelf);
+        Warehouse_Product warehouseProduct = new Warehouse_Product(id, name, producer, unit);
         productsMap.computeIfAbsent(id, k -> new ArrayList<>()).add(warehouseProduct);
         System.out.println(G + "✔️ Product created successfully.");
+        Loading();
     }
 
     public void enterProduct() {
@@ -54,6 +52,7 @@ public class Warehouse_Management {
             for (Warehouse_Product warehouseProduct : warehouseProductList) {
                 System.out.println(G + "🗃️ Updated Product: " + warehouseProduct);
             }
+            Loading();
         } else {
             int answer;
             do {
@@ -97,6 +96,7 @@ public class Warehouse_Management {
                     warehouseProduct.setQuantity(remainingQuantity);
                     System.out.println(G + "✔️ Product exited successfully.");
                     System.out.println(W + "🗃️ Updated Product: " + warehouseProduct);
+                    Loading();
                 } else if (remainingQuantity == 0) {
                     int answer;
                     do {
@@ -121,6 +121,7 @@ public class Warehouse_Management {
                 } else {
                     System.out.println(R + "‼️ Exit quantity for product with ID " + id + " exceeds available quantity.");
                     System.out.println(W + "🗃️ Available Quantity: " + warehouseProduct.getQuantity());
+                    Loading();
                 }
             }
         } else {
@@ -128,32 +129,28 @@ public class Warehouse_Management {
         }
     }
 
-    public void buyProduct() {
-        System.out.print(Y + "✒️ Enter product ID to buy: ");
+    public void placeProduct() {
+        System.out.print(Y + "✒️ Enter product ID you want to Place on the Shelf: ");
         int id = Input_Exception_Handler.getIntInput("");
 
-        if (!isProductIdExists(id)) {
-            System.out.println(R + "‼️ Product with ID " + id + " not exists.");
-            return;
-        }
-
-        System.out.print(Y + "✒️ Enter quantity to buy: ");
-        int exitQuantity = Input_Exception_Handler.getIntInput("");
-
         List<Warehouse_Product> warehouseProductList = productsMap.get(id);
+
         if (warehouseProductList != null && !warehouseProductList.isEmpty()) {
+
+            System.out.println(Y + "✒️ Enter product Shelf:");
+            System.out.print(W + "📃 Shelf: ");
+            String shelf = Input_Exception_Handler.getNonBlankStringInput("");
+
             for (Warehouse_Product warehouseProduct : warehouseProductList) {
-                int remainingQuantity = warehouseProduct.getQuantity() - exitQuantity;
-                if (remainingQuantity >= 0) {
-                    warehouseProduct.setQuantity(remainingQuantity);
-                    System.out.println(G + "🛒✔️ Product purchase successful.");
-                } else {
-                    System.out.println(R + "‼️ Exit quantity for product with ID " + id + " exceeds available quantity.");
-                    System.out.println(W + "🗃️ Available Quantity: " + warehouseProduct.getQuantity());
-                }
+                warehouseProduct.setShelf(shelf);
+                System.out.println(G + "✔️ Product updated successfully.");
+                System.out.println(W + "🗃️ Updated Product: " + warehouseProduct);
             }
+            Loading();
         } else {
             System.out.println(R + "‼️ Product with ID " + id + " not found.");
+            System.out.println(B + "🚪 Returning to the Manager Menu...");
+            Loading();
         }
     }
 
@@ -191,6 +188,7 @@ public class Warehouse_Management {
                     System.out.println(G + "✔️ Product updated successfully.");
 
                     System.out.println(W + "🗃️ Updated Product: " + updatedProduct);
+                    Loading();
                     return;
                 }
             }
@@ -210,6 +208,7 @@ public class Warehouse_Management {
         if (warehouseProductList != null && !warehouseProductList.isEmpty()) {
             productsMap.remove(id);
             System.out.println(G + "✔️ Product deleted successfully.");
+            Loading();
         } else {
             System.out.println(R + "‼️ Product with ID " + id + " not found.");
             System.out.println(B + "🚪 Returning to the Manager Menu...");
@@ -218,12 +217,43 @@ public class Warehouse_Management {
     }
 
     public void listProducts() {
+        Loading();
         System.out.println(W + "🗃️ List of Products:");
 
         productsMap.values().stream()
                 .flatMap(List::stream)
                 .sorted(Comparator.comparingInt(Warehouse_Product::getId))
                 .forEach(System.out::println);
+    }
+
+    public void buyProduct() {
+        System.out.print(Y + "✒️ Enter product ID to buy: ");
+        int id = Input_Exception_Handler.getIntInput("");
+
+        if (!isProductIdExists(id)) {
+            System.out.println(R + "‼️ Product with ID " + id + " not exists.");
+            return;
+        }
+
+        System.out.print(Y + "✒️ Enter quantity to buy: ");
+        int exitQuantity = Input_Exception_Handler.getIntInput("");
+
+        List<Warehouse_Product> warehouseProductList = productsMap.get(id);
+        if (warehouseProductList != null && !warehouseProductList.isEmpty()) {
+            for (Warehouse_Product warehouseProduct : warehouseProductList) {
+                int remainingQuantity = warehouseProduct.getQuantity() - exitQuantity;
+                if (remainingQuantity >= 0) {
+                    warehouseProduct.setQuantity(remainingQuantity);
+                    System.out.println(G + "🛒✔️ Product purchase successful.");
+                    Loading();
+                } else {
+                    System.out.println(R + "‼️ Quantity for product with ID " + id + " exceeds available quantity.");
+                    System.out.println(W + "🗃️ Available Quantity: " + warehouseProduct.getQuantity());
+                }
+            }
+        } else {
+            System.out.println(R + "‼️ Product with ID " + id + " not found.");
+        }
     }
 
     public void initializeProduct(int id, String name, String producer, int quantity, String unit, String shelf) {
@@ -282,6 +312,7 @@ public class Warehouse_Management {
                 break;
             case 0:
                 System.out.println(G + "👋 Exiting the system. Goodbye! 👋");
+                Loading();
                 System.exit(0);
             default:
                 System.out.println(R + "‼️ Invalid choice. Please enter a valid option.");
@@ -303,9 +334,10 @@ public class Warehouse_Management {
                 System.out.println(G + "1️⃣ 🗃️ Create Product");
                 System.out.println(G + "2️⃣ 📥 Enter Product");
                 System.out.println(R + "3️⃣ 📤 Exit Product");
-                System.out.println(B + "4️⃣ 🔄 Update Product");
-                System.out.println(R + "5️⃣ 🗑️ Delete Product");
-                System.out.println(B + "6️⃣ 📋 List Products");
+                System.out.println(B + "4️⃣ 🔄 Place Product to Shelf");
+                System.out.println(B + "5️⃣ 🔄 Update Product");
+                System.out.println(R + "6️⃣ 🗑️ Delete Product");
+                System.out.println(B + "7️⃣ 📋 List Products");
                 System.out.println(R + "0️⃣ 🚪 Exit");
                 System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
 
@@ -322,12 +354,15 @@ public class Warehouse_Management {
                         exitProduct();
                         break;
                     case 4:
-                        updateProduct();
+                        placeProduct();
                         break;
                     case 5:
-                        deleteProduct();
+                        updateProduct();
                         break;
                     case 6:
+                        deleteProduct();
+                        break;
+                    case 7:
                         listProducts();
                         break;
                     case 0:

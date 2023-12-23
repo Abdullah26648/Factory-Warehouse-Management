@@ -14,8 +14,18 @@ public class Warehouse_Product {
         this.unit = unit;
         this.shelf = shelf;
     }
+    public Warehouse_Product(int id, String name, String producer, String unit) {
+        this.id = id;
+        this.name = name;
+        this.producer = producer;
+        this.unit = unit;
+    }
 
     public Warehouse_Product() {
+    }
+
+    public void setShelf(String shelf) {
+        this.shelf = shelf;
     }
 
     public int getId() {
