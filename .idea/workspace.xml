@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a8accc0-e191-49b9-b9c9-cbb247fcf61b" name="Changes" comment="21.12.2023 6. day progress. This is last commit promise :).">
-      <change afterPath="$PROJECT_DIR$/src/Authorization_Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Retail_Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Warehouse_Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Input_Exception_Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input_Exception_Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warehouse_Management.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Management.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warehouse_Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Runner.java" afterDir="false" />
-    </list>
+    <list default="true" id="5a8accc0-e191-49b9-b9c9-cbb247fcf61b" name="Changes" comment="21.12.2023 6. day progress. This is last commit promise :)." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,27 +51,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Warehouse_Manager.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Warehouse_Runner.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.Warehouse_Management_Test.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Warehouse_Management_Test.testEnterProduct.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/MONSTER/IdeaProjects/Factory Warehouse Management/src&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.rainbow.brackets.disable.when&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Warehouse_Manager.executor": "Run",
+    "Application.Warehouse_Runner.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.Warehouse_Management_Test.executor": "Run",
+    "JUnit.Warehouse_Management_Test.testEnterProduct.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Testing",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/MONSTER/IdeaProjects/Factory Warehouse Management/src",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.rainbow.brackets.disable.when"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\MONSTER\IdeaProjects\Factory Warehouse Management\src" />
