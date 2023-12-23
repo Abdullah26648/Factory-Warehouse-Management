@@ -1,10 +1,7 @@
 import java.util.*;
 
-public class Warehouse_Management implements Product {
+public class Warehouse_Management {
     public static final Map<Integer, List<Warehouse_Product>> productsMap = new HashMap<>();
-    public Scanner scanner = new Scanner(System.in);
-    private static final String MANAGER_PASSWORD = "12345";
-
     public static final String W = "\u001B[37m"; // White
     public static final String R = "\u001B[31m"; // Red
     public static final String G = "\u001B[32m"; // Green
@@ -29,6 +26,7 @@ public class Warehouse_Management implements Product {
         Warehouse_Product warehouseProduct = new Warehouse_Product(id, name, producer, unit);
         productsMap.computeIfAbsent(id, k -> new ArrayList<>()).add(warehouseProduct);
         System.out.println(G + "✔️ Product created successfully.");
+        System.out.println(G + "🗃️ Created Product: " + warehouseProduct);
         Loading();
     }
 
@@ -109,8 +107,9 @@ public class Warehouse_Management implements Product {
                         answer = Input_Exception_Handler.getIntInput("");
 
                         if (answer == 1) {
-                            deleteProduct();
+                            delete(id);
                         } else if (answer == 2) {
+                            warehouseProduct.setQuantity(remainingQuantity);
                             System.out.println(B + "🚪 Returning to the Manager Menu...");
                             Loading();
                         } else {
@@ -216,6 +215,13 @@ public class Warehouse_Management implements Product {
         }
     }
 
+    public void delete(int id) {
+        productsMap.computeIfPresent(id, (key, value) -> {
+            System.out.println(Warehouse_Management.G + "✔️ Product deleted successfully.");
+            Loading();
+            return null;
+        });
+    }
     public void listProducts() {
         Loading();
         System.out.println(W + "🗃️ List of Products:");
@@ -275,7 +281,7 @@ public class Warehouse_Management implements Product {
         initializeProduct(1010, "Muz", "Anamur", 105, "Kasa", "Gıda");
     }
 
-    public void Loading() {
+    public static void Loading() {
         for (int i = 0; i < 30; i++) {
             System.out.print("💲");
             try {
@@ -291,125 +297,4 @@ public class Warehouse_Management implements Product {
         return productsMap.containsKey(productId);
     }
 
-    public void authorizationMenu() {
-        System.out.println("\n⚜️⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
-        System.out.println(Y + "🔐 Welcome to the Authorization Menu 🔐");
-        System.out.println(W + "🔐 Please choose your role 🕵️");
-        System.out.println(G + "1️⃣ 🛍️ Customer");
-        System.out.println(B + "2️⃣ 🛠️ Manager");
-        System.out.println(R + "0️⃣ 🚪 Exit");
-        System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
-
-        System.out.print(Y + "✒️ Enter your choice: ");
-        int roleChoice = Input_Exception_Handler.getIntInput("");
-
-        switch (roleChoice) {
-            case 1:
-                CustomerMenu();
-                break;
-            case 2:
-                ManagerMenu();
-                break;
-            case 0:
-                System.out.println(G + "👋 Exiting the system. Goodbye! 👋");
-                Loading();
-                System.exit(0);
-            default:
-                System.out.println(R + "‼️ Invalid choice. Please enter a valid option.");
-                Loading();
-        }
-    }
-
-    public void ManagerMenu() {
-        System.out.print(Y + "✒️ Enter manager password: ");
-        String enteredPassword = scanner.nextLine();
-
-        if (enteredPassword.equals(MANAGER_PASSWORD)) {
-            System.out.println(G + "✔️ Successfully entered manager mode.");
-            Loading();
-            int choice;
-            do {
-                System.out.println(B + "\n🛠️ Manager Menu 🛠️");
-                System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
-                System.out.println(G + "1️⃣ 🗃️ Create Product");
-                System.out.println(G + "2️⃣ 📥 Enter Product");
-                System.out.println(R + "3️⃣ 📤 Exit Product");
-                System.out.println(B + "4️⃣ 🔄 Place Product to Shelf");
-                System.out.println(B + "5️⃣ 🔄 Update Product");
-                System.out.println(R + "6️⃣ 🗑️ Delete Product");
-                System.out.println(B + "7️⃣ 📋 List Products");
-                System.out.println(R + "0️⃣ 🚪 Exit");
-                System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
-
-                System.out.print(Y + "✒️ Enter your choice: ");
-                choice = Input_Exception_Handler.getIntInput("");
-                switch (choice) {
-                    case 1:
-                        createProduct();
-                        break;
-                    case 2:
-                        enterProduct();
-                        break;
-                    case 3:
-                        exitProduct();
-                        break;
-                    case 4:
-                        placeProduct();
-                        break;
-                    case 5:
-                        updateProduct();
-                        break;
-                    case 6:
-                        deleteProduct();
-                        break;
-                    case 7:
-                        listProducts();
-                        break;
-                    case 0:
-                        System.out.println(B + "🚪 Returning to the Authorization Menu...");
-                        Loading();
-                        authorizationMenu();
-                        break;
-                    default:
-                        System.out.println(R + "‼️ Invalid choice. Please enter a valid option.");
-                }
-
-            } while (choice != 0);
-        } else {
-            System.out.println(R + "‼️ Incorrect password. Access denied.");
-            Loading();
-            authorizationMenu();
-        }
-    }
-
-    public void CustomerMenu() {
-        int choice;
-        do {
-            System.out.println(G + "\n🛍️ Customer Menu 🛍️");
-            System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
-            System.out.println(G + "1️⃣ 🛒 Buy Product");
-            System.out.println(B + "2️⃣ 📋 List Products");
-            System.out.println(R + "0️⃣ 🚪 Exit");
-            System.out.println("⚜️⭐⭐⭐⭐⭐⭐⭐⭐⚜️");
-
-            System.out.print(Y + "✒️ Enter your choice: ");
-            choice = Input_Exception_Handler.getIntInput("");
-            switch (choice) {
-                case 1:
-                    buyProduct();
-                    break;
-                case 2:
-                    listProducts();
-                    break;
-                case 0:
-                    System.out.println(B + "🚪 Returning to the Authorization Menu...");
-                    Loading();
-                    authorizationMenu();
-                    break;
-                default:
-                    System.out.println(R + "‼️ Invalid choice. Please enter a valid option.");
-            }
-
-        } while (choice != 0);
-    }
 }

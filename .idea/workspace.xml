@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a8accc0-e191-49b9-b9c9-cbb247fcf61b" name="Changes" comment="21.12.2023 5. day progress. Whole project colorcoded and some methods modified. This is last commit :).">
+    <list default="true" id="5a8accc0-e191-49b9-b9c9-cbb247fcf61b" name="Changes" comment="21.12.2023 6. day progress. This is last commit promise :).">
+      <change afterPath="$PROJECT_DIR$/src/Authorization_Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Retail_Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Warehouse_Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Input_Exception_Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Input_Exception_Handler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Warehouse_Management.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Management.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Warehouse_Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Warehouse_Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Warehouse_Runner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -205,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703266304799</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="21.12.2023 6. day progress. This is last commit promise :).">
+      <option name="closed" value="true" />
+      <created>1703346102788</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1703346102788</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -228,6 +242,7 @@
     <MESSAGE value="21.12.2023 4. day progress. Returning method created and wait function implemented with some visual improvement." />
     <MESSAGE value="21.12.2023 5. day progress. Whole project colorcoded and some methods modified. This is last commit." />
     <MESSAGE value="21.12.2023 5. day progress. Whole project colorcoded and some methods modified. This is last commit :)." />
-    <option name="LAST_COMMIT_MESSAGE" value="21.12.2023 5. day progress. Whole project colorcoded and some methods modified. This is last commit :)." />
+    <MESSAGE value="21.12.2023 6. day progress. This is last commit promise :)." />
+    <option name="LAST_COMMIT_MESSAGE" value="21.12.2023 6. day progress. This is last commit promise :)." />
   </component>
 </project>

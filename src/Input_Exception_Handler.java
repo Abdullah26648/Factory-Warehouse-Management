@@ -19,7 +19,7 @@ public class Input_Exception_Handler {
             } catch (InputMismatchException e) {
                 System.out.println(R + "‼️ Invalid input type. Please enter a valid numeric value ‼️");
                 System.out.print(Y + "✒️ Please enter a valid numeric value: ");
-                scanner.nextLine();/*💰💲💰*/
+                scanner.nextLine(); /*💰💲💰*/
             }
         }
     }
